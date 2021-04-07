@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 public interface CardProjection {
     Integer getId();
 
-    String getCardholderName();
+    String getUsername();
 
     long getCardNumber();
 
