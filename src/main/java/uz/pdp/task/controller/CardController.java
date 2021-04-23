@@ -1,11 +1,11 @@
-package uz.pdp.task.Controller;
+package uz.pdp.task.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uz.pdp.task.Entity.Card;
-import uz.pdp.task.Service.CardService;
+import uz.pdp.task.entity.Card;
+import uz.pdp.task.service.CardService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

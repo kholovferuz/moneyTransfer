@@ -1,4 +1,4 @@
-package uz.pdp.task.Service;
+package uz.pdp.task.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;

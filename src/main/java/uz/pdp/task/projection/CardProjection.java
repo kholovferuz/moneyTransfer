@@ -1,7 +1,7 @@
-package uz.pdp.task.Projection;
+package uz.pdp.task.projection;
 
 import org.springframework.data.rest.core.config.Projection;
-import uz.pdp.task.Entity.Card;
+import uz.pdp.task.entity.Card;
 
 import java.sql.Timestamp;
 

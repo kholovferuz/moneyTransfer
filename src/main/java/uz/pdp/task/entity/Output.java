@@ -1,4 +1,4 @@
-package uz.pdp.task.Entity;
+package uz.pdp.task.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Input {
+public class Output {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -24,6 +24,8 @@ public class Input {
     private Card toCard;
 
     private Double amount;
+
+    private Double comissionAmount;
 
     @CreationTimestamp
     private Timestamp date;

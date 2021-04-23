@@ -1,4 +1,4 @@
-package uz.pdp.task.DTO;
+package uz.pdp.task.dto;
 
 import lombok.Data;
 

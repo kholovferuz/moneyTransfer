@@ -1,4 +1,4 @@
-package uz.pdp.task.Entity;
+package uz.pdp.task.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,13 +7,12 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Output {
+public class Input {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -25,8 +24,6 @@ public class Output {
     private Card toCard;
 
     private Double amount;
-
-    private Double comissionAmount;
 
     @CreationTimestamp
     private Timestamp date;

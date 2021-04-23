@@ -1,4 +1,4 @@
-package uz.pdp.task.Entity;
+package uz.pdp.task.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

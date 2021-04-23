@@ -1,7 +1,7 @@
-package uz.pdp.task.Repository;
+package uz.pdp.task.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import uz.pdp.task.Entity.Input;
+import uz.pdp.task.entity.Input;
 
 import java.util.List;
 

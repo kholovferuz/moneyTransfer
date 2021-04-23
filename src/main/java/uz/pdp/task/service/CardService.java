@@ -1,10 +1,10 @@
-package uz.pdp.task.Service;
+package uz.pdp.task.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import uz.pdp.task.Entity.Card;
-import uz.pdp.task.JWT.JWTProvider;
-import uz.pdp.task.Repository.CardRepository;
+import uz.pdp.task.entity.Card;
+import uz.pdp.task.jwt.JWTProvider;
+import uz.pdp.task.repository.CardRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

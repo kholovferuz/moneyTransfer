@@ -1,9 +1,9 @@
-package uz.pdp.task.Service;
+package uz.pdp.task.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import uz.pdp.task.Entity.Input;
-import uz.pdp.task.Repository.InputRepository;
+import uz.pdp.task.entity.Input;
+import uz.pdp.task.repository.InputRepository;
 
 import java.util.List;
 

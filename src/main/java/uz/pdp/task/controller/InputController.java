@@ -1,4 +1,4 @@
-package uz.pdp.task.Controller;
+package uz.pdp.task.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import uz.pdp.task.Entity.Input;
-import uz.pdp.task.Service.InputService;
+import uz.pdp.task.entity.Input;
+import uz.pdp.task.service.InputService;
 
 import java.util.List;
 

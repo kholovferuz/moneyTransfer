@@ -1,4 +1,4 @@
-package uz.pdp.task.JWT;
+package uz.pdp.task.jwt;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

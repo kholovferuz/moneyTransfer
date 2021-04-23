@@ -1,4 +1,4 @@
-package uz.pdp.task.Configuration;
+package uz.pdp.task.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,8 +11,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import uz.pdp.task.JWT.JWTFilter;
-import uz.pdp.task.Service.AuthDetail;
+import uz.pdp.task.jwt.JWTFilter;
+import uz.pdp.task.service.AuthDetail;
 
 @EnableWebSecurity
 public class SecuritySettings extends WebSecurityConfigurerAdapter {
@@ -46,6 +46,7 @@ public class SecuritySettings extends WebSecurityConfigurerAdapter {
 
         // SPRING SECURITYGA UsernamePasswordAuthenticationFilter.class DAN OLDIN jwtFilter NI ISHLATISHNI BUYURISH
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+
         // SPRING SECURITYGA SESSIYAGA USHLAB QOLMASLIGI UCHUN
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
