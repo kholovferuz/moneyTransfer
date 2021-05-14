@@ -1,6 +1,5 @@
 package uz.pdp.task.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,20 +14,28 @@ import uz.pdp.task.dto.LoginDTO;
 import uz.pdp.task.jwt.JWTProvider;
 import uz.pdp.task.service.AuthDetail;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-    @Autowired
-    AuthDetail authService;
-    @Autowired
-    JWTProvider jwtProvider;
-    @Autowired
-    PasswordEncoder passwordEncoder;
-    @Autowired
-    AuthenticationManager authenticationManager;
+    final AuthDetail authService;
+    final JWTProvider jwtProvider;
+    final PasswordEncoder passwordEncoder;
+    final AuthenticationManager authenticationManager;
+
+    public AuthController(AuthDetail authService,
+                          JWTProvider jwtProvider,
+                          PasswordEncoder passwordEncoder,
+                          AuthenticationManager authenticationManager) {
+        this.authService = authService;
+        this.jwtProvider = jwtProvider;
+        this.passwordEncoder = passwordEncoder;
+        this.authenticationManager = authenticationManager;
+    }
 
     @PostMapping("/login")
-    public HttpEntity<?> loginToSystem(@RequestBody LoginDTO loginDTO) {
+    public HttpEntity<?> loginToSystem(@Valid @RequestBody LoginDTO loginDTO) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.getUsername(), loginDTO.getPassword()));
             String token = jwtProvider.generateToken(loginDTO.getUsername());

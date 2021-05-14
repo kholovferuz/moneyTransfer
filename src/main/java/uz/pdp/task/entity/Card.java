@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Data
@@ -19,14 +16,16 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false)
     private String username;
 
-//    private String cardholderName;
-
+    @Column(nullable = false, unique = true)
     private long cardNumber;
 
+    @Column(nullable = false)
     private Timestamp expirationDate;
 
+    @Column(nullable = false)
     private Double balance;
 
     private boolean active = true;

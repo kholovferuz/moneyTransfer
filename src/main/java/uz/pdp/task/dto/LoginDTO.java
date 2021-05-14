@@ -1,9 +1,16 @@
 package uz.pdp.task.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+import javax.validation.constraints.NotNull;
+
+@Getter
+@Setter
 public class LoginDTO {
+    @NotNull(message = "Username should not be empty")
     private String username;
+
+    @NotNull(message = "Password should not be empty")
     private String password;
 }

@@ -1,6 +1,5 @@
 package uz.pdp.task.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,16 +10,21 @@ import uz.pdp.task.dto.OutputDTO;
 import uz.pdp.task.service.OutputService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/output")
 public class OutputController {
-    @Autowired
-    OutputService outputService;
+
+    final OutputService outputService;
+
+    public OutputController(OutputService outputService) {
+        this.outputService = outputService;
+    }
 
     @PostMapping
-    public HttpEntity<?> transferMoney(@RequestBody OutputDTO outputDTO, HttpServletRequest request) {
-        String moneyToCard = outputService.tranferMoneyToCard(outputDTO,request);
+    public HttpEntity<?> transferMoney(@Valid @RequestBody OutputDTO outputDTO, HttpServletRequest request) {
+        String moneyToCard = outputService.tranferMoneyToCard(outputDTO, request);
         return ResponseEntity.status(202).body(moneyToCard);
     }
 

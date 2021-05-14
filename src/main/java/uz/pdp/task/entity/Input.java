@@ -17,12 +17,13 @@ public class Input {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Card fromCard;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Card toCard;
 
+    @Column(nullable = false)
     private Double amount;
 
     @CreationTimestamp
