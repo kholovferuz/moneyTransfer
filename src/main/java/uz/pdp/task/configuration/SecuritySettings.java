@@ -2,6 +2,7 @@ package uz.pdp.task.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,15 +13,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import uz.pdp.task.jwt.JWTFilter;
-import uz.pdp.task.service.AuthDetail;
+import uz.pdp.task.service.AuthDetailImpl;
 
 @EnableWebSecurity
 public class SecuritySettings extends WebSecurityConfigurerAdapter {
-    @Autowired
-    AuthDetail authDetail;
 
-    @Autowired
-    JWTFilter jwtFilter;
+    final AuthDetailImpl authDetailImpl;
+
+    final JWTFilter jwtFilter;
+
+    public SecuritySettings(@Lazy JWTFilter jwtFilter,
+                          @Lazy AuthDetailImpl authDetailImpl) {
+        this.jwtFilter = jwtFilter;
+        this.authDetailImpl = authDetailImpl;
+    }
 
     @Bean
     @Override
@@ -32,7 +38,7 @@ public class SecuritySettings extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .userDetailsService(authDetail);
+                .userDetailsService(authDetailImpl);
 
     }
 

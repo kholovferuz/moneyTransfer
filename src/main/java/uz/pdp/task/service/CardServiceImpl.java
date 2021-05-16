@@ -7,6 +7,7 @@ import uz.pdp.task.jwt.JWTProvider;
 import uz.pdp.task.repository.CardRepository;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -22,10 +23,15 @@ public class CardServiceImpl implements CardService {
     }
 
     public String addCard(CardDTO cardDTO, HttpServletRequest request) {
+        boolean existsByCardNumber = cardRepository.existsByCardNumber(cardDTO.getCardNumber());
+        if (existsByCardNumber) {
+            return "Card with this number already exists";
+        }
         Card cards = new Card();
         cards.setCardNumber(cardDTO.getCardNumber());
         cards.setBalance(cardDTO.getBalance());
-        cards.setExpirationDate(cardDTO.getExpirationDate());
+        cards.setExpiryDate(LocalDate.now().plusYears(5));
+        cards.setCardholderName(cardDTO.getCardholerName());
 
         String token = request.getHeader("Authorization");
         token = token.substring(7);

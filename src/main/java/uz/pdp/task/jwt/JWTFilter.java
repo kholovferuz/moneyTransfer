@@ -1,12 +1,11 @@
 package uz.pdp.task.jwt;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import uz.pdp.task.service.AuthDetail;
+import uz.pdp.task.service.AuthDetailImpl;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -16,10 +15,14 @@ import java.io.IOException;
 
 @Component
 public class JWTFilter extends OncePerRequestFilter {
-    @Autowired
-    JWTProvider jwtProvider;
-    @Autowired
-    AuthDetail authDetail;
+
+    final JWTProvider jwtProvider;
+    final AuthDetailImpl authDetailImpl;
+
+    public JWTFilter(JWTProvider jwtProvider, AuthDetailImpl authDetailImpl) {
+        this.jwtProvider = jwtProvider;
+        this.authDetailImpl = authDetailImpl;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest,
@@ -40,7 +43,7 @@ public class JWTFilter extends OncePerRequestFilter {
                 String usernameFromToken = jwtProvider.getUsernameFromToken(token);
 
                 // username orqali userdetails ni oldik
-                UserDetails userDetails = authDetail.loadUserByUsername(usernameFromToken);
+                UserDetails userDetails = authDetailImpl.loadUserByUsername(usernameFromToken);
 
                 // userdetails orqali atuhentication yaratdik
                 UsernamePasswordAuthenticationToken authenticationToken =
@@ -55,6 +58,6 @@ public class JWTFilter extends OncePerRequestFilter {
             }
         }
 
-        filterChain.doFilter(httpServletRequest,httpServletResponse);
+        filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 }

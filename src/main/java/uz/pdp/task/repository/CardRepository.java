@@ -5,4 +5,5 @@ import uz.pdp.task.entity.Card;
 
 
 public interface CardRepository extends JpaRepository<Card, Integer> {
+    boolean existsByCardNumber(String cardNumber);
 }

@@ -7,5 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 
 @Service
 public interface OutputService {
+
     String tranferMoneyToCard(OutputDTO outputDTO, HttpServletRequest request);
 }

@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.Optional;
 
 @Service
-public class OutputServiceImpl {
+public class OutputServiceImpl implements OutputService {
 
     final OutputRepository outputRepository;
     final InputRepository inputRepository;
@@ -111,7 +111,7 @@ public class OutputServiceImpl {
         input.setAmount(amount);
         inputRepository.save(input);
 
-        return "Money transfer has been successfully completed" + "\nCard: ************" + String.valueOf(toCard.getCardNumber()).substring(12)
+        return "Money transfer has been successfully completed" + "\nCard: ************" + toCard.getCardNumber().substring(12)
                 + "\nTime: " + new Date() + "\nAmount: " + amount + "\nCommission: " + commissionAmount + "\nTotal amount: " +
                 amountWithCommission + "\nBalance: " + fromBalance;
 

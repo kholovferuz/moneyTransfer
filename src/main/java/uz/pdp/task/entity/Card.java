@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -19,11 +19,14 @@ public class Card {
     @Column(nullable = false)
     private String username;
 
-    @Column(nullable = false, unique = true)
-    private long cardNumber;
+    @Column(nullable = false)
+    private String cardholderName;
 
     @Column(nullable = false)
-    private Timestamp expirationDate;
+    private String cardNumber;
+
+    @Column(nullable = false)
+    private LocalDate expiryDate;
 
     @Column(nullable = false)
     private Double balance;

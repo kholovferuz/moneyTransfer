@@ -1,5 +1,6 @@
 package uz.pdp.task.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class Input {
     @ManyToOne(optional = false)
     private Card fromCard;
 
+    @JsonIgnore
     @ManyToOne(optional = false)
     private Card toCard;
 
